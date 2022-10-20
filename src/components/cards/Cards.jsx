@@ -36,7 +36,7 @@ function Cards() {
 
   const getData = async () => {
     const resp = await axios.get(
-      `http://localhost:3001/applications/${user?.email}`
+      `https://jobapplications-backend-production.up.railway.app/applications/${user?.email}`
     );
     setInfo(resp.data);
     setFilterState(resp.data);
@@ -44,7 +44,9 @@ function Cards() {
 
   const deleteApplications = async (e) => {
     try {
-      await axios.delete(`http://localhost:3001/delete/${e.target.value}`);
+      await axios.delete(
+        `https://jobapplications-backend-production.up.railway.app/delete/${e.target.value}`
+      );
       Swal.fire("Job Application Deleted", "success");
       getData();
     } catch (error) {
@@ -76,7 +78,7 @@ function Cards() {
   /* console.log(info); */
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   return currentInfo?.length !== 0 ? (
     <>

@@ -30,7 +30,10 @@ function CardDetail({
       e.target.value === "Successful" && (status.name = "Rejected");
       e.target.value === "Rejected" && (status.name = "In process");
 
-      await axios.put(`http://localhost:3001/edit/${e.target.name}`, status);
+      await axios.put(
+        `https://jobapplications-backend-production.up.railway.app/edit/${e.target.name}`,
+        status
+      );
       getDataDetail(id, email);
     } catch (error) {
       console.log(error);

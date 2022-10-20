@@ -18,7 +18,7 @@ function Detail() {
 
   const getDataDetail = async (userId, userEmail) => {
     const resp = await axios.get(
-      `http://localhost:3001/detail/${userEmail}?id=${userId}`
+      `https://jobapplications-backend-production.up.railway.app/detail/${userEmail}?id=${userId}`
     );
     SetCard(resp.data);
   };
