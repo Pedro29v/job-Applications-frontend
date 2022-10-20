@@ -78,7 +78,7 @@ function Cards() {
   /* console.log(info); */
   useEffect(() => {
     getData();
-  }, [getData]);
+  }, []);
 
   return currentInfo?.length !== 0 ? (
     <>
