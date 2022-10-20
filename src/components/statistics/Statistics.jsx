@@ -18,7 +18,7 @@ function Statistics() {
   useEffect(() => {
     const allInfo = async () => {
       const resp = await axios.get(
-        `http://localhost:3001/applications/${user?.email}`
+        `https://jobapplications-backend-production.up.railway.app//applications/${user?.email}`
       );
 
       return setInfo(resp.data);

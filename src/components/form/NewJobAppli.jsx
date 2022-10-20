@@ -39,7 +39,10 @@ function NewJobAppli() {
       userEmail: user?.email,
     };
     try {
-      await axios.post("http://localhost:3001/newAppli", allData);
+      await axios.post(
+        "https://jobapplications-backend-production.up.railway.app/newAppli",
+        allData
+      );
       Swal.fire("New Job Applications", "success");
       navigate("/home");
     } catch (error) {
