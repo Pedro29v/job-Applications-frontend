@@ -17,3 +17,8 @@ body {
   --primary-color: #489086;
   --secondary-color: #2f4858;
 }
+
+.style {
+  text-decoration: none;
+  color: inherit;
+}

@@ -40,7 +40,7 @@ function NewJobAppli() {
     };
     try {
       await axios.post("http://localhost:3001/newAppli", allData);
-      Swal.fire("New Job Applications", "success", "success");
+      Swal.fire("New Job Applications", "success");
       navigate("/home");
     } catch (error) {
       console.log(error.response);

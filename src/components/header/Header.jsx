@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Head, Logo, TitleHead, Wrapper } from "../style/style.js";
 import { useAuth0 } from "@auth0/auth0-react";
-import perfil from "../../img/perfil.png";
 
 function Nav() {
   const { logout, user } = useAuth0();
@@ -9,7 +8,7 @@ function Nav() {
   return (
     <Head>
       <Wrapper>
-        <Logo src={user?.picture || perfil} alt={user?.name} />
+        <Logo src={user?.picture} alt={user?.name} />
       </Wrapper>
 
       <Wrapper>

@@ -70,6 +70,7 @@ export const Section = styled.div`
 
   @media screen and (max-width: 480px) {
     margin-top: 4rem;
+    width: 80%;
   }
 `;
 
@@ -120,7 +121,7 @@ export const IMG = styled.img`
 `;
 
 export const Button = styled.button`
-  width: 5rem;
+  width: 7rem;
   padding: 14px;
   background-color: var(--primary-color);
   color: #fff;
@@ -189,6 +190,15 @@ export const Navigation = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  @media screen and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0rem;
+    height: auto;
+  }
 `;
 
 export const Formu = styled.form`
@@ -197,6 +207,10 @@ export const Formu = styled.form`
   color: #fff;
   margin: auto;
   font-weight: bold;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const Input = styled.input`
@@ -244,12 +258,19 @@ export const Division = styled(Main)`
 
 export const DisplayInfo = styled.div`
   width: 70%;
-  height: auto;
+  min-height: 50vh;
   margin: auto;
   margin-bottom: 3rem;
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    padding: 0rem;
+    padding-bottom: 1rem;
+    margin-top: 2rem;
+  }
 `;
 
 export const Info = styled.div`
@@ -276,9 +297,10 @@ export const Strong = styled.strong`
 `;
 
 export const UpdateButton = styled(Button)`
-  width: 95%;
+  width: 80%;
   margin: auto;
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
   background-color: #2f4858;
 
   &:hover {
@@ -287,6 +309,10 @@ export const UpdateButton = styled(Button)`
     color: var(--secondary-color);
     transition: background 0.5s;
     border-radius: 3px;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-bottom: 1rem;
   }
 `;
 
@@ -297,16 +323,16 @@ export const DeleteDiv = styled.div`
 `;
 
 export const DeleteButton = styled(Button)`
-  width: 1.5rem;
-  background-color: #fff;
-  color: var(--secondary-color);
+  width: 5rem;
+  background-color: var(--secondary-color);
+  color: #fff;
   margin-right: 0px;
   padding: 3px;
 
   &:hover {
     box-shadow: none;
-    background-color: var(--secondary-color);
-    color: #fff;
+    background-color: #fff;
+    color: var(--secondary-color);
     transition: background 0.5s;
     border-radius: 3px;
   }
@@ -314,26 +340,23 @@ export const DeleteButton = styled(Button)`
 
 export const DivStatus = styled(Block)`
   width: 100%;
+  margin: auto;
+  margin-top: 0.5rem;
   background-color: var(--secondary-color);
-
-  padding: 1rem;
-  font-size: 1.3em;
+  font-size: 1em;
+  font-weight: bold;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 `;
 
 export const SpanBlue = styled.span`
   color: #009ff5;
-  font-size: 1.1em;
-  font-weight: bold;
 `;
 export const SpanGreen = styled.span`
   color: #00c099;
-  font-size: 1.1em;
-  font-weight: bold;
 `;
 export const SpanRed = styled.span`
   color: #ea9a27;
-  font-size: 1.1em;
-  font-weight: bold;
 `;
 
 export const Foot = styled.footer`
@@ -345,6 +368,7 @@ export const Foot = styled.footer`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 10rem;
 `;
 
 export const Loader = styled.div`
@@ -403,4 +427,149 @@ export const Choose = styled(Options)`
   font-weight: bold;
   font-size: 1em;
   cursor: pointer;
+
+  @media screen and (max-width: 480px) {
+    margin: auto;
+    margin-top: 1rem;
+  }
+`;
+
+/* TODAS LAS APLICACIONES  DE TRABAJO */
+
+export const CardAplication = styled.div`
+  width: 70%;
+  height: auto;
+  padding: 0.5rem;
+  background-color: var(--secondary-color);
+  margin: auto;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+
+  &:hover {
+    box-shadow: 2px 2px 15px 1px #000;
+    transition: all 0.8s ease-out;
+  }
+`;
+
+export const Separator = styled.div`
+  width: 98.5%;
+  padding: 0.3rem;
+`;
+
+export const FirstLine = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const TextInfo = styled.div`
+  font-size: 0.9em;
+`;
+
+export const DetailSection = styled(Main)`
+  width: 65%;
+  height: 70vh;
+  margin: auto;
+  margin-top: 4rem;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const ContentButtonBack = styled.div`
+  width: 30%;
+  heigtht: 100%;
+  display: flex;
+  padding-top: 3rem;
+  justify-content: end;
+`;
+
+export const ContentDetailCard = styled.div`
+  width: 70%;
+  heigtht: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const DetailCard = styled(CardAplication)`
+  background-color: var(--primary-color);
+  color: #fff;
+  width: 40%;
+  height: auto;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0rem;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 80%;
+    margin-top: 4rem;
+  }
+`;
+
+export const TitleName = styled.p`
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+`;
+export const DivStatusDetail = styled(DivStatus)`
+  background-color: var(--secondary-color);
+`;
+
+export const Pagination = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 7rem;
+`;
+
+export const Graphs = styled.div`
+  width: 70%;
+  background-color: #fff;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+
+  @media screen and (max-width: 480px) {
+    margin-top: 4rem;
+    width: 100%;
+    height: 200px;
+    padding-top: 1.5rem;
+  }
+`;
+
+export const ContainerGraph = styled.div`
+  width: 80%;
+  margin: auto;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
+`;
+
+export const DivisionButton = styled(Navigation)`
+  width: 50%;
+`;
+
+export const DivNavButtom = styled.div`
+  @media screen and (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;

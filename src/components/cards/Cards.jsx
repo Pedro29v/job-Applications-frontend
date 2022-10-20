@@ -1,26 +1,51 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "./Card.jsx";
-import { DisplayInfo, ContainerVacio, Welcome } from "../style/style.js";
+import {
+  DisplayInfo,
+  ContainerVacio,
+  Welcome,
+  Button,
+  Pagination,
+} from "../style/style.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import Nav from "../nav/Nav.jsx";
 import Swal from "sweetalert2";
+import AllApplications from "./AllApplications.jsx";
 
 function Cards() {
   const [info, setInfo] = useState("");
+  const [filterState, setFilterState] = useState();
   const { user } = useAuth0();
 
-  const getData = async (orderInfo = "DESC") => {
+  let [currentPage, setCurrentpage] = useState(1);
+  let [appForPage] = useState(5);
+  const lastApp = currentPage * appForPage;
+  const firstApp = lastApp - appForPage;
+  const currentInfo = info.slice(firstApp, lastApp);
+  const pageLimit = Math.ceil(info.length / appForPage);
+
+  const prev = () => {
+    if (currentPage !== 1) {
+      setCurrentpage(currentPage - 1);
+    }
+  };
+
+  const next = () => {
+    if (currentPage < pageLimit) setCurrentpage(currentPage + 1);
+  };
+
+  const getData = async () => {
     const resp = await axios.get(
-      `http://localhost:3001/applications/${user?.email}?inf=${orderInfo}`
+      `http://localhost:3001/applications/${user?.email}`
     );
     setInfo(resp.data);
+    setFilterState(resp.data);
   };
 
   const deleteApplications = async (e) => {
     try {
       await axios.delete(`http://localhost:3001/delete/${e.target.value}`);
-      Swal.fire("Job Application Deleted", "Deleted", "success");
+      Swal.fire("Job Application Deleted", "success");
       getData();
     } catch (error) {
       console.log(error);
@@ -28,49 +53,38 @@ function Cards() {
   };
 
   const order = (e) => {
-    let orderInfo = "";
+    let result = "";
+    e.target.value === "desc"
+      ? (result = [...info.sort((a, b) => (a.date < b.date ? 1 : -1))])
+      : (result = [...info.sort((a, b) => (a.date > b.date ? 1 : -1))]);
 
-    e.target.value === "desc" ? (orderInfo = "DESC") : (orderInfo = "ASC");
-
-    getData(orderInfo);
-  };
-
-  const changeStatus = async (e) => {
-    try {
-      const status = { name: "" };
-      e.target.value === "In process" && (status.name = "Successful");
-      e.target.value === "Successful" && (status.name = "Rejected");
-      e.target.value === "Rejected" && (status.name = "In process");
-
-      await axios.put(`http://localhost:3001/edit/${e.target.name}`, status);
-      getData();
-    } catch (error) {
-      console.log(error);
-    }
+    setInfo(result);
   };
 
   const filter = async (e) => {
-    let response = "";
-    console.log(e.target.value);
-    e.target.value === "All"
-      ? getData()
-      : (response = await axios.get(
-          `http://localhost:3001/filter/${user?.email}?filtro=${e.target.value}`
-        ));
-    setInfo(response.data);
+    if (e.target.value === "All") return setInfo(filterState);
+
+    if (e.target.value !== "All") {
+      let result = filterState.filter(
+        (element) => element.status === e.target.value
+      );
+      result.length > 0
+        ? setInfo(result)
+        : Swal.fire("Job applications with this status not found", "info");
+    }
   };
   /* console.log(info); */
   useEffect(() => {
     getData();
   }, []);
 
-  return info?.length !== 0 ? (
+  return currentInfo?.length !== 0 ? (
     <>
       <Nav order={order} filter={filter} />
       <DisplayInfo>
-        {info?.map((e, i) => {
+        {currentInfo?.map((e, i) => {
           return (
-            <Card
+            <AllApplications
               key={i}
               company={e.company}
               country={e.country}
@@ -80,11 +94,15 @@ function Cards() {
               status={e.status}
               id={e.id}
               deleteApp={deleteApplications}
-              changeStatus={changeStatus}
+              email={user?.email}
             />
           );
         })}
       </DisplayInfo>
+      <Pagination>
+        <Button onClick={prev}>Prev</Button>
+        <Button onClick={next}>Next</Button>
+      </Pagination>
     </>
   ) : (
     <>
