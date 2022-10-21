@@ -18,12 +18,14 @@ respuestas de las empresas. 📝
 
 <h2>Funcionalidades</h2>
 
--Crear un nuevo registro.
--Cambiar el estatus de la aplicación a la vacante.
--Eliminar el registro.
--Filtrar por estatus.
--Ordenar de manera ascendente y descendente.
--Ver estadisticas.
+<ul>
+ <li>Crear un nuevo registro.</li>
+ <li>Cambiar el estatus de la aplicación a la vacante.</li>
+ <li>Eliminar el registro.</li>
+ <li>Filtrar por estatus.</li>
+ <li>Ordenar de manera ascendente y descendente.</li>
+ <li>Ver estadisticas.</li>
+</ul>
 <hr>
 
 <h2>Herramientas Utilizadas</h2>
