@@ -1,4 +1,4 @@
-<em> Job Applications </em>
+<h1> Job Applications </h1>
 
 <h2>Descripción del Proyecto </h2>
 
