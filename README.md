@@ -30,12 +30,14 @@ respuestas de las empresas. 📝
 
 <h2>Herramientas Utilizadas</h2>
 
--React js 
--Styled Components
--Apex Chart
--Node js
--Express
--Sequelize
--PostgreSQL
-<hr>
+<ul>
+ <li>React js </li>
+ <li>Styled Components</li>
+ <li>Apex Chart</li>
+ <li>Node js</li>
+ <li>Express</li>
+ <li>Sequelize</li>
+ <li>PostgreSQL</li>
+</ul>
+
 
